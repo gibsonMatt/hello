@@ -1,16 +1,22 @@
 #!/usr/bin/env nextflow
 
-process sayHello {
-  input: 
-    val x
+
+process parse_csv {
+  input:
+  path 'in.txt'
+  path 'out.txt'
+
   output:
-    stdout
-  script:
-    """
-    echo '$x world!'
-    """
+  stdout
+
+  """
+  sleep 10
+  cat in.txt > out.txt
+  """
+
 }
 
+
 workflow {
-  Channel.of('Bonjour', 'Ciao', 'Hello', 'Hola') | sayHello | view
+  parse_csv(file(params.input_csv), file(params.output_path))
 }
