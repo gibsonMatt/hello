@@ -9,6 +9,7 @@ process sayHello {
     """
     echo 'sleeping'
     sleep 15
+    exit 2
     echo '$x world!'
     """
 }
