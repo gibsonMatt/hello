@@ -7,6 +7,7 @@ process sayHello {
     stdout
   script:
     """
+    sleep 15
     echo '$x world!'
     """
 }
